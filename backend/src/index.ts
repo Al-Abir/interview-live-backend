@@ -25,8 +25,7 @@ app.use(cors())
 app.use(ErrorHandling)
 
 //create table before staring server
-createUsertable();
-
+createUsertable()
 
 // Testing postgres route
 app.get('/', async (req: Request, res: Response) => {
@@ -41,8 +40,7 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 //router
-app.use('/api/v1',userRouters)
-
+app.use('/api/v1', userRouters)
 
 // Start server
 app.listen(PORT, () => {
