@@ -3,6 +3,7 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import { defineConfig } from 'eslint/config'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
@@ -13,14 +14,17 @@ export default defineConfig([
   {
     rules: {
       eqeqeq: 'off',
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      // 👇 এখানে ঠিক করলাম
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
       'prefer-const': ['error', { ignoreReadBeforeAssign: true }],
     },
   },
   {
-    ignores: ['.node_modules/*'],
+    ignores: ['node_modules/*'], // 👈 ".node_modules" না, শুধু node_modules
   },
-
   eslintPluginPrettierRecommended,
   tseslint.configs.recommended,
 ])
